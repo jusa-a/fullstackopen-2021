@@ -79,12 +79,47 @@ describe('total likes', () => {
 })
 
 describe('favorite blog', () => {
+    test('of an empty list is undefined', () => {
+        const result = listHelper.favoriteBlog([])
+        expect(result).toEqual(undefined)
+    })
+
     test('is the one with most likes', () => {
         const result = listHelper.favoriteBlog(blogs)
         expect(result).toEqual({
             title: 'Canonical string reduction',
             author: 'Edsger W. Dijkstra',
             likes: 12,
+        })
+    })
+})
+
+describe('most blogs', () => {
+    test('of an empty list is undefined', () => {
+        const result = listHelper.mostBlogs([])
+        expect(result).toEqual(undefined)
+    })
+
+    test('of a blog list is found correctly', () => {
+        const result = listHelper.mostBlogs(blogs)
+        expect(result).toEqual({
+            author: 'Robert C. Martin',
+            blogs: 3,
+        })
+    })
+})
+
+describe('most likes', () => {
+    test('of an empty list is undefined', () => {
+        const result = listHelper.mostLikes([])
+        expect(result).toEqual(undefined)
+    })
+
+    test('of a blog list is found correctly', () => {
+        const result = listHelper.mostLikes(blogs)
+        expect(result).toEqual({
+            author: 'Edsger W. Dijkstra',
+            likes: 17,
         })
     })
 })
